@@ -1,4 +1,5 @@
 import { Button } from '@/components/Button';
+
 import { ArrowRight, ChevronDown, Download } from "lucide-react";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { AnimatedBorderButton } from '../components/AnimatedBorderButton';
@@ -67,21 +68,34 @@ export const Hero = () => {
                   </div>
                   {/* CTAs */}
                   <div className="flex flex-wrap  gap-4 animate-fade-in animation-delay-300">
-                     <Button size="lg" >
+                     <Button
+                        size="lg"
+                        onClick={() => {
+                           document.getElementById("contact")?.scrollIntoView({
+                              behavior: "smooth",
+                           });
+                        }}
+                     >
                         Contact me <ArrowRight className="w-5 h-5" />
                      </Button>
-                     <AnimatedBorderButton >
-                        <Download className="w-5 h-5" />
-                        Download CV
-                     </AnimatedBorderButton>
+                    <AnimatedBorderButton>
+  <a
+    href="/Nada-Hammami-cv.pdf"
+    download="Nada-Hammami-CV.pdf"
+    className="flex items-center gap-2"
+  >
+    <Download className="w-5 h-5" />
+    Download CV
+  </a>
+</AnimatedBorderButton>
                   </div>
                   {/* Social Links */}
                   <div className='flex items-center gap-4 animate-fade-in animation-delay-400 '>
                      <span className='text_sm text_muted-foreground' > Follow: </span>
                      {[
-                        { icon: FaGithub, href: "#" },
-                        { icon: FaLinkedin, href: "#" },
-                        { icon: FaTwitter, href: "#" }
+                        { icon: FaGithub, href: "https://github.com/NadaHammami3" },
+                        { icon: FaLinkedin, href: "https://www.linkedin.com/in/hammami-nada-31664b220/?isSelfProfile=true" },
+                        { icon: FaTwitter, href: "https://x.com/HamamiNada2094" }
                      ].map((social, idx) => (
 
                         <a key={idx} href={social.href} className='p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all duration-300'>

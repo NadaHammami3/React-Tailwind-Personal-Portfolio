@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { Menu,X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/Button";
+
 
 const navLinks = [
   { href: "#about", label: "About" },
@@ -12,7 +13,7 @@ const navLinks = [
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-    useEffect(() => {
+  useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
@@ -23,9 +24,8 @@ export const Navbar = () => {
   }, []);
   return (
     <header
-      className={`fixed top-0 left-0 right-0 transition-all duration-500 ${
-        isScrolled ? "glass-strong py-3" : "bg-transparent py-5"
-      }  z-50`}
+      className={`fixed top-0 left-0 right-0 transition-all duration-500 ${isScrolled ? "glass-strong py-3" : "bg-transparent py-5"
+        }  z-50`}
     >
       <nav className="container mx-auto px-6 flex items-center justify-between">
 
@@ -53,7 +53,14 @@ export const Navbar = () => {
 
         {/* CTA Button */}
         <div className="hidden md:block">
-          <Button size="sm">
+          <Button
+            size="sm"
+            onClick={() => {
+              document.getElementById("contact")?.scrollIntoView({
+                behavior: "smooth",
+              });
+            }}
+          >
             Contact Me
           </Button>
         </div>
@@ -63,8 +70,8 @@ export const Navbar = () => {
           className="md:hidden p-2 text-foreground cursor-pointer"
           onClick={() => setIsMobileMenuOpen((prev) => !prev)}
         >
-         {isMobileMenuOpen ? <X size ={24}/> : 
-          <Menu size={24} /> }
+          {isMobileMenuOpen ? <X size={24} /> :
+            <Menu size={24} />}
         </button>
 
       </nav>
